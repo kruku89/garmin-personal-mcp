@@ -7,10 +7,9 @@ WORKDIR /app
 
 COPY . .
 
-# Instalacja zależności z pyproject.toml
-RUN uv sync --frozen --no-cache
+# Usunięto flagę --frozen
+RUN uv sync --no-cache
 
 EXPOSE 8000
 
-# Uruchomienie serwera MCP w trybie HTTP na porcie podanym przez Railway
 CMD ["uv", "run", "garmin-personal-mcp", "--host", "0.0.0.0", "--port", "8000"]
